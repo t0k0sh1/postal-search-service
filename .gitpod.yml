@@ -1,5 +1,7 @@
 tasks:
-  - init: pip3 install -r ./requirements.txt
+  - name: "Install requirements libraries"
+    command: pip3 install -r ./requirements.txt
+  - name: "Setup MySQL database"
     command: mysql -u root < ./init.sql 
 image:
   file: .gitpod.Dockerfile
