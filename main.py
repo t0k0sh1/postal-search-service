@@ -4,12 +4,20 @@ import os
 from flask import Flask, request, jsonify
 import mysql.connector
 
-conn = mysql.connector.connect(
-    user=os.getenv('MYSQL_USER', 'user'),
-    password=os.getenv('MYSQL_PASS', 'password'),
-    host=os.getenv('MYSQL_HOST', 'localhost'),
-    database=os.getenv('MYSQL_DB', 'sample')
-)
+if os.getenv('ENV', 'DEVELOPMENT') == 'PRODUCTION':
+    conn = mysql.connector.connect(
+        user=os.getenv('MYSQL_USER', 'user'),
+        password=os.getenv('MYSQL_PASS', 'password'),
+        database=os.getenv('MYSQL_DB', 'sample'),
+        unix_socket=os.getenv('MYSQL_HOST', '')
+    )
+else:
+    conn = mysql.connector.connect(
+        user=os.getenv('MYSQL_USER', 'user'),
+        password=os.getenv('MYSQL_PASS', 'password'),
+        host=os.getenv('MYSQL_HOST', 'localhost'),
+        database=os.getenv('MYSQL_DB', 'sample')
+    )
 
 def select_by_query(request):
     # For more information about CORS and CORS preflight requests, see
