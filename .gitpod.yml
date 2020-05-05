@@ -1,0 +1,5 @@
+tasks:
+  - init: pip3 install -r ./requirements.txt
+    command: mysql -u root < ./init.sql 
+image:
+  file: .gitpod.Dockerfile
