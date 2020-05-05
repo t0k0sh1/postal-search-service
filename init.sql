@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS sample;
+DROP USER IF EXISTS 'user'@'localhost';
+
 -- create new database
 CREATE DATABASE sample DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
@@ -26,3 +29,5 @@ CREATE TABLE address (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '作成日時',
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新日時'
 );
+
+INSERT INTO address (zipcode, pref_name, pref_name_kana, city_name, city_name_kana, town_name, town_name_kana) VALUES ('1420041', '東京都', 'トウキョウト', '品川区', 'シナガワク', '戸越', 'トゴシ');
