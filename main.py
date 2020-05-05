@@ -15,7 +15,7 @@ else:
     conn = mysql.connector.connect(
         user=os.getenv('MYSQL_USER', 'user'),
         password=os.getenv('MYSQL_PASS', 'password'),
-        host=os.getenv('MYSQL_HOST', 'localhost'),
+        #host=os.getenv('MYSQL_HOST', 'localhost'),
         database=os.getenv('MYSQL_DB', 'sample')
     )
 
